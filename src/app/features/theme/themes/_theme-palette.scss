@@ -1,0 +1,14 @@
+@mixin contour-theme(
+  $primary,
+  $on-primary,
+  $primary-container,
+  $on-primary-container,
+  $surface-tint: $primary
+) {
+  --mat-sys-primary: #{$primary};
+  --mat-sys-on-primary: #{$on-primary};
+  --mat-sys-primary-container: #{$primary-container};
+  --mat-sys-on-primary-container: #{$on-primary-container};
+  --mat-sys-surface-tint: #{$surface-tint};
+  --app-theme-accent: #{$primary};
+}

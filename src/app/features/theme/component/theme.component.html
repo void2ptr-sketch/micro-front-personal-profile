@@ -1,0 +1,37 @@
+<mat-card class="theme">
+  <mat-card-header>
+    <mat-card-title>{{ 'theme.title' | t }}</mat-card-title>
+    <mat-card-subtitle>{{ 'theme.subtitle' | t }}</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <p class="theme__meta">
+      {{ 'theme.current' | t }}:
+      <strong>{{ 'theme.option.' + themeService.theme() | t }}</strong>
+    </p>
+
+    <p class="theme__meta">
+      {{ 'theme.contour' | t }}:
+      <strong>{{ env.contour }}</strong>
+    </p>
+
+    @if (themeService.isContourDefault()) {
+      <p class="theme__auto">{{ 'theme.contourDefault' | t }}</p>
+    }
+
+    <mat-form-field class="theme__select">
+      <mat-label>{{ 'theme.select' | t }}</mat-label>
+      <mat-select [value]="themeService.theme()" (valueChange)="onThemeChange($event)">
+        @for (option of themeOptions; track option.id) {
+          <mat-option [value]="option.id">{{ option.labelKey | t }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    @if (!themeService.isContourDefault()) {
+      <button mat-stroked-button type="button" (click)="resetToContour()">
+        {{ 'theme.resetContour' | t }}
+      </button>
+    }
+  </mat-card-content>
+</mat-card>

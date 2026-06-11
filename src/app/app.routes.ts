@@ -27,6 +27,12 @@ export const routes: Routes = [
           import('./features/locale/locale/locale.component').then((m) => m.LocaleComponent),
         data: { titleKey: 'route.locale.title' },
       },
+      {
+        path: 'theme',
+        loadComponent: () =>
+          import('./features/theme/component/theme.component').then((m) => m.ThemeComponent),
+        data: { titleKey: 'route.theme.title' },
+      },
     ],
   },
   { path: '**', redirectTo: 'home' },

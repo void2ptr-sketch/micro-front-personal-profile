@@ -1,0 +1,5 @@
+@use 'theme-palette' as palette;
+
+html[data-theme='preprod'] {
+  @include palette.contour-theme(#1565c0, #ffffff, #bbdefb, #0d47a1);
+}

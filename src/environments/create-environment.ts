@@ -10,6 +10,6 @@ type EnvironmentConfig = {
 };
 
 export const createEnvironment = (config: EnvironmentConfig): AppEnvironment => ({
-  appName: 'personal-profile',
+  appName: 'Personal Profile',
   ...config,
 });
