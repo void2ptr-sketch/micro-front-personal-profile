@@ -1,0 +1,82 @@
+<mat-card class="security">
+  <mat-card-header>
+    <mat-card-title>Безопасность</mat-card-title>
+    <mat-card-subtitle>Смена пароля</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    @if (securityService.isSuccess()) {
+      <p class="security__success" role="status">{{ securityService.successMessage() }}</p>
+      <button mat-stroked-button type="button" (click)="resetState()">Изменить ещё раз</button>
+    } @else {
+      <form class="security__form" [formGroup]="form" (ngSubmit)="submit()">
+        <mat-form-field class="security__field security__field--current">
+          <mat-label>Текущий пароль</mat-label>
+          <input
+            matInput
+            type="password"
+            formControlName="currentPassword"
+            autocomplete="current-password"
+          />
+          @if (
+            form.controls.currentPassword.touched &&
+            form.controls.currentPassword.hasError('required')
+          ) {
+            <mat-error>Обязательное поле</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field class="security__field security__field--new">
+          <mat-label>Новый пароль</mat-label>
+          <input
+            matInput
+            type="password"
+            formControlName="newPassword"
+            autocomplete="new-password"
+          />
+          @if (
+            form.controls.newPassword.touched && form.controls.newPassword.hasError('required')
+          ) {
+            <mat-error>Обязательное поле</mat-error>
+          }
+          @if (
+            form.controls.newPassword.touched && form.controls.newPassword.hasError('minlength')
+          ) {
+            <mat-error>Минимум {{ minPasswordLength }} символов</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field class="security__field security__field--confirm">
+          <mat-label>Подтверждение пароля</mat-label>
+          <input
+            matInput
+            type="password"
+            formControlName="confirmPassword"
+            autocomplete="new-password"
+          />
+          @if (
+            form.controls.confirmPassword.touched &&
+            form.controls.confirmPassword.hasError('required')
+          ) {
+            <mat-error>Обязательное поле</mat-error>
+          }
+        </mat-form-field>
+
+        @if (securityService.error()) {
+          <p class="security__error" role="alert">{{ securityService.error() }}</p>
+        }
+
+        <div class="security__actions">
+          <button
+            mat-flat-button
+            color="primary"
+            type="submit"
+            [disabled]="securityService.isSubmitting()"
+          >
+            {{ securityService.isSubmitting() ? 'Сохранение...' : 'Сменить пароль' }}
+          </button>
+        </div>
+      </form>
+    }
+  </mat-card-content>
+</mat-card>
