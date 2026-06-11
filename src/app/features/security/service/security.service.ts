@@ -1,7 +1,7 @@
 import { Injectable, computed, signal } from '@angular/core';
 
-import { MIN_PASSWORD_LENGTH } from './security.constants';
-import type { PasswordChangeRequest, PasswordChangeStatus } from './security.types';
+import { MIN_PASSWORD_LENGTH } from '../security/security.constants';
+import type { PasswordChangeRequest, PasswordChangeStatus } from '../security/security.types';
 
 @Injectable({ providedIn: 'root' })
 export class SecurityService {

@@ -16,7 +16,7 @@ export const routes: Routes = [
       {
         path: 'security',
         loadComponent: () =>
-          import('./features/security/security.component').then((m) => m.SecurityComponent),
+          import('./features/security/security/security.component').then((m) => m.SecurityComponent),
         title: 'Безопасность',
       },
     ],

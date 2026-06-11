@@ -6,7 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
 import { MIN_PASSWORD_LENGTH } from './security.constants';
-import { SecurityService } from './security.service';
+import { SecurityService } from '../service/security.service';
 
 @Component({
   selector: 'app-security',
