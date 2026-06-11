@@ -3,13 +3,15 @@ import { firstValueFrom } from 'rxjs';
 
 import { ApiClientError } from '../../../core/api/api-client.error';
 import { SecurityApiService } from '../../../core/api/services/security-api.service';
+import { InputSanitizerService } from '../../../shared/security/input-sanitizer.service';
 import { LocaleService } from '../../locale/service/locale.service';
-import { MIN_PASSWORD_LENGTH } from '../security.constants';
+import { MAX_PASSWORD_LENGTH, MIN_PASSWORD_LENGTH } from '../security.constants';
 import type { PasswordChangeRequest, PasswordChangeStatus } from '../security.types';
 
 @Injectable({ providedIn: 'root' })
 export class SecurityService {
   private readonly localeService = inject(LocaleService);
+  private readonly inputSanitizer = inject(InputSanitizerService);
   private readonly securityApi = inject(SecurityApiService);
   private readonly statusSignal = signal<PasswordChangeStatus>('idle');
   private readonly errorSignal = signal<string | null>(null);
@@ -31,7 +33,8 @@ export class SecurityService {
     this.errorSignal.set(null);
     this.successSignal.set(null);
 
-    const validationError = this.validateRequest(request);
+    const sanitizedRequest = this.sanitizeRequest(request);
+    const validationError = this.validateRequest(sanitizedRequest);
     if (validationError) {
       this.setError(validationError);
       return Promise.resolve();
@@ -39,8 +42,8 @@ export class SecurityService {
 
     return firstValueFrom(
       this.securityApi.changePassword({
-        currentPassword: request.currentPassword,
-        newPassword: request.newPassword,
+        currentPassword: sanitizedRequest.currentPassword,
+        newPassword: sanitizedRequest.newPassword,
       }),
     )
       .then(() => {
@@ -60,6 +63,16 @@ export class SecurityService {
     this.statusSignal.set('idle');
     this.errorSignal.set(null);
     this.successSignal.set(null);
+  }
+
+  private sanitizeRequest(request: PasswordChangeRequest): PasswordChangeRequest {
+    const passwordOptions = { maxLength: MAX_PASSWORD_LENGTH };
+
+    return {
+      currentPassword: this.inputSanitizer.sanitizePassword(request.currentPassword, passwordOptions),
+      newPassword: this.inputSanitizer.sanitizePassword(request.newPassword, passwordOptions),
+      confirmPassword: this.inputSanitizer.sanitizePassword(request.confirmPassword, passwordOptions),
+    };
   }
 
   private validateRequest(request: PasswordChangeRequest): string | null {
