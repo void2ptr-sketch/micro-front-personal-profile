@@ -1,15 +1,14 @@
 import { TestBed } from '@angular/core/testing';
 import { provideNoopAnimations } from '@angular/platform-browser/animations';
 
-import { LocaleService } from '../../locale/service/locale.service';
+import { LocaleService } from '../service/locale.service';
 
-import { SecurityComponent } from './security.component';
+import { LocaleComponent } from './locale.component';
 
-describe('SecurityComponent', () => {
+describe('LocaleComponent', () => {
   beforeEach(async () => {
-    localStorage.clear();
     await TestBed.configureTestingModule({
-      imports: [SecurityComponent],
+      imports: [LocaleComponent],
       providers: [provideNoopAnimations()],
     }).compileComponents();
 
@@ -17,7 +16,7 @@ describe('SecurityComponent', () => {
   });
 
   it('should create', () => {
-    const fixture = TestBed.createComponent(SecurityComponent);
+    const fixture = TestBed.createComponent(LocaleComponent);
     expect(fixture.componentInstance).toBeTruthy();
   });
 });

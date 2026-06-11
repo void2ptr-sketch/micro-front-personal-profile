@@ -13,6 +13,7 @@ export class NavigationStateService {
     const pluginItems: NavItem[] = this.profileState.plugins().map((plugin) => ({
       label: plugin.name,
       path: plugin.routePath,
+      labelKey: plugin.labelKey,
     }));
 
     return [...DEFAULT_NAV_ITEMS, ...pluginItems];

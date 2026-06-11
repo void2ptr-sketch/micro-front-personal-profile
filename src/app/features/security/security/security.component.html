@@ -1,17 +1,19 @@
 <mat-card class="security">
   <mat-card-header>
-    <mat-card-title>Безопасность</mat-card-title>
-    <mat-card-subtitle>Смена пароля</mat-card-subtitle>
+    <mat-card-title>{{ 'security.title' | t }}</mat-card-title>
+    <mat-card-subtitle>{{ 'security.subtitle' | t }}</mat-card-subtitle>
   </mat-card-header>
 
   <mat-card-content>
     @if (securityService.isSuccess()) {
       <p class="security__success" role="status">{{ securityService.successMessage() }}</p>
-      <button mat-stroked-button type="button" (click)="resetState()">Изменить ещё раз</button>
+      <button mat-stroked-button type="button" (click)="resetState()">
+        {{ 'security.changeAgain' | t }}
+      </button>
     } @else {
       <form class="security__form" [formGroup]="form" (ngSubmit)="submit()">
         <mat-form-field class="security__field security__field--current">
-          <mat-label>Текущий пароль</mat-label>
+          <mat-label>{{ 'security.currentPassword' | t }}</mat-label>
           <input
             matInput
             type="password"
@@ -22,12 +24,12 @@
             form.controls.currentPassword.touched &&
             form.controls.currentPassword.hasError('required')
           ) {
-            <mat-error>Обязательное поле</mat-error>
+            <mat-error>{{ 'security.required' | t }}</mat-error>
           }
         </mat-form-field>
 
         <mat-form-field class="security__field security__field--new">
-          <mat-label>Новый пароль</mat-label>
+          <mat-label>{{ 'security.newPassword' | t }}</mat-label>
           <input
             matInput
             type="password"
@@ -37,17 +39,19 @@
           @if (
             form.controls.newPassword.touched && form.controls.newPassword.hasError('required')
           ) {
-            <mat-error>Обязательное поле</mat-error>
+            <mat-error>{{ 'security.required' | t }}</mat-error>
           }
           @if (
             form.controls.newPassword.touched && form.controls.newPassword.hasError('minlength')
           ) {
-            <mat-error>Минимум {{ minPasswordLength }} символов</mat-error>
+            <mat-error>{{
+              'security.minLength' | t: { PH: minPasswordLength.toString() }
+            }}</mat-error>
           }
         </mat-form-field>
 
         <mat-form-field class="security__field security__field--confirm">
-          <mat-label>Подтверждение пароля</mat-label>
+          <mat-label>{{ 'security.confirmPassword' | t }}</mat-label>
           <input
             matInput
             type="password"
@@ -58,7 +62,7 @@
             form.controls.confirmPassword.touched &&
             form.controls.confirmPassword.hasError('required')
           ) {
-            <mat-error>Обязательное поле</mat-error>
+            <mat-error>{{ 'security.required' | t }}</mat-error>
           }
         </mat-form-field>
 
@@ -73,7 +77,9 @@
             type="submit"
             [disabled]="securityService.isSubmitting()"
           >
-            {{ securityService.isSubmitting() ? 'Сохранение...' : 'Сменить пароль' }}
+            {{
+              securityService.isSubmitting() ? ('security.submitting' | t) : ('security.submit' | t)
+            }}
           </button>
         </div>
       </form>

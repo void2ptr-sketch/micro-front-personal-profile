@@ -21,7 +21,12 @@ describe('ProfileStateService', () => {
   it('should register plugin without duplicates', () => {
     service.loadInitialProfile();
 
-    const plugin = { id: 'security', name: 'Безопасность', routePath: '/security' };
+    const plugin = {
+      id: 'security',
+      name: 'Безопасность',
+      routePath: '/security',
+      labelKey: 'nav.security',
+    };
     service.registerPlugin(plugin);
     service.registerPlugin(plugin);
 
