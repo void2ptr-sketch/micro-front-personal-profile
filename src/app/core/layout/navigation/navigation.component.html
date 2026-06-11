@@ -1,0 +1,15 @@
+<nav class="navigation" aria-label="Основная навигация">
+  <mat-nav-list>
+    @for (item of navItems; track item.path) {
+      <a
+        mat-list-item
+        class="navigation__link"
+        [routerLink]="item.path"
+        routerLinkActive="navigation__link--active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        {{ item.label }}
+      </a>
+    }
+  </mat-nav-list>
+</nav>

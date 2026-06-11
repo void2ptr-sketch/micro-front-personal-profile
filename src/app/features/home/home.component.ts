@@ -1,0 +1,14 @@
+import { Component, inject } from '@angular/core';
+import { MatCardModule } from '@angular/material/card';
+
+import { APP_ENVIRONMENT } from '../../core/config/app-environment.token';
+
+@Component({
+  selector: 'app-home',
+  imports: [MatCardModule],
+  templateUrl: './home.component.html',
+  styleUrl: './home.component.scss',
+})
+export class HomeComponent {
+  readonly env = inject(APP_ENVIRONMENT);
+}
