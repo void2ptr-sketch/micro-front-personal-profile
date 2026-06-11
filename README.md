@@ -1,59 +1,83 @@
-# PersonalProfile
+# personal-profile
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.27.
+Модуль персонального профиля пользователя на Angular. Подключается в другие проекты и расширяется плагинами (безопасность, локализация и др.).
 
-## Development server
+## Стек
 
-To start a local development server, run:
+- Angular 19 (standalone components)
+- TypeScript, SCSS
+- Angular Material
+- Signal API для состояния
+- `@angular/localize` + runtime i18n (ru, en, zh)
+- HttpClient + interceptors (auth, errors, mock API)
 
-```bash
-ng serve
+## Структура проекта
+
+```
+src/app/
+├── core/           # layout, API, state, domain
+├── features/       # home, security, locale
+├── shared/         # pipes, security utils
+└── smoke/          # smoke-тесты
+
+src/locale/         # файлы переводов по языкам
+src/environments/   # конфигурация окружений
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Требования
 
-## Code scaffolding
+- Node.js 22+
+- npm 10+
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Установка
 
 ```bash
-ng generate --help
+npm install
 ```
 
-## Building
+Секреты и локальные переменные — в `.env.local` (см. `.env.example`). Не коммитьте файлы с секретами.
 
-To build the project run:
+## Запуск
 
 ```bash
-ng build
+# dev-сервер
+npm start
+
+# открыть http://localhost:4200
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+## Сборка
 
 ```bash
-ng test
+# production
+npm run build:prod
+
+# артефакты: dist/personal-profile/
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+## Тесты и качество
 
 ```bash
-ng e2e
+npm test              # unit-тесты (watch)
+npm run test:ci       # CI: headless, без watch
+npm run lint          # ESLint
+npm run format:check  # Prettier
+npm run audit         # проверка зависимостей
+npm run ci            # lint + build:prod + test:ci
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## CI
 
-## Additional Resources
+GitHub Actions (`.github/workflows/ci.yml`): на push/PR в `main` выполняются lint, production build и тесты.
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Маршруты
+
+| Путь        | Описание        |
+| ----------- | --------------- |
+| `/home`     | Главная         |
+| `/security` | Смена пароля    |
+| `/locale`   | Выбор языка     |
+
+## Дополнительно
+
+План задач — в [TASKS.md](TASKS.md).
