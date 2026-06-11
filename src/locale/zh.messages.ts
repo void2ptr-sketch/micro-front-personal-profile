@@ -37,4 +37,9 @@ export const ZH_MESSAGES: LocaleMessages = {
   'locale.option.zh': '中文',
   'locale.option.en': '英语',
   'footer.copyright': 'personal-profile',
+  'api.error.network': '无法连接到服务器',
+  'api.error.unauthorized': '需要授权',
+  'api.error.notFound': '资源未找到',
+  'api.error.server': '服务器错误',
+  'api.error.unknown': '未知错误',
 };

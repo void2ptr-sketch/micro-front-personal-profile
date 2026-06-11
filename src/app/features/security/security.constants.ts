@@ -1,4 +1,4 @@
-import type { ProfilePlugin } from '../../../core/domain/profile-domain.types';
+import type { ProfilePlugin } from '../../core/domain/profile-domain.types';
 
 export const SECURITY_PLUGIN: ProfilePlugin = {
   id: 'security',

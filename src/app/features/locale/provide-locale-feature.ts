@@ -6,9 +6,9 @@ import { LOCALE_PLUGIN } from './locale/locale.constants';
 import { LocaleService } from './service/locale.service';
 
 export const provideLocaleFeature = () =>
-  provideAppInitializer(() => {
+  provideAppInitializer(async () => {
     inject(LocaleService).initialize();
     const profileState = inject(ProfileStateService);
-    profileState.loadInitialProfile();
+    await profileState.loadInitialProfile();
     profileState.registerPlugin(LOCALE_PLUGIN);
   });

@@ -1,12 +1,16 @@
 import { Injectable, computed, inject, signal } from '@angular/core';
+import { firstValueFrom } from 'rxjs';
 
+import { ApiClientError } from '../../../core/api/api-client.error';
+import { SecurityApiService } from '../../../core/api/services/security-api.service';
 import { LocaleService } from '../../locale/service/locale.service';
-import { MIN_PASSWORD_LENGTH } from '../security/security.constants';
-import type { PasswordChangeRequest, PasswordChangeStatus } from '../security/security.types';
+import { MIN_PASSWORD_LENGTH } from '../security.constants';
+import type { PasswordChangeRequest, PasswordChangeStatus } from '../security.types';
 
 @Injectable({ providedIn: 'root' })
 export class SecurityService {
   private readonly localeService = inject(LocaleService);
+  private readonly securityApi = inject(SecurityApiService);
   private readonly statusSignal = signal<PasswordChangeStatus>('idle');
   private readonly errorSignal = signal<string | null>(null);
   private readonly successSignal = signal<string | null>(null);
@@ -18,9 +22,9 @@ export class SecurityService {
   readonly isSubmitting = computed(() => this.statusSignal() === 'submitting');
   readonly isSuccess = computed(() => this.statusSignal() === 'success');
 
-  changePassword(request: PasswordChangeRequest): void {
+  changePassword(request: PasswordChangeRequest): Promise<void> {
     if (this.statusSignal() === 'submitting') {
-      return;
+      return Promise.resolve();
     }
 
     this.statusSignal.set('submitting');
@@ -30,12 +34,26 @@ export class SecurityService {
     const validationError = this.validateRequest(request);
     if (validationError) {
       this.setError(validationError);
-      return;
+      return Promise.resolve();
     }
 
-    // Заглушка до подключения HTTP API в разделе «API и данные»
-    this.statusSignal.set('success');
-    this.successSignal.set(this.localeService.translate('security.success.passwordChanged'));
+    return firstValueFrom(
+      this.securityApi.changePassword({
+        currentPassword: request.currentPassword,
+        newPassword: request.newPassword,
+      }),
+    )
+      .then(() => {
+        this.statusSignal.set('success');
+        this.successSignal.set(this.localeService.translate('security.success.passwordChanged'));
+      })
+      .catch((error: unknown) => {
+        const message =
+          error instanceof ApiClientError
+            ? error.message
+            : this.localeService.translate('api.error.unknown');
+        this.setError(message);
+      });
   }
 
   resetFormState(): void {

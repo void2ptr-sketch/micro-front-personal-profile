@@ -7,7 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 
 import { TranslatePipe } from '../../../shared/pipes/translate.pipe';
 import { SecurityService } from '../service/security.service';
-import { MIN_PASSWORD_LENGTH } from './security.constants';
+import { MIN_PASSWORD_LENGTH } from '../security.constants';
 
 @Component({
   selector: 'app-security',
@@ -34,7 +34,7 @@ export class SecurityComponent {
     confirmPassword: ['', Validators.required],
   });
 
-  submit(): void {
+  async submit(): Promise<void> {
     if (this.form.invalid) {
       this.form.markAllAsTouched();
       return;
@@ -42,7 +42,7 @@ export class SecurityComponent {
 
     const { currentPassword, newPassword, confirmPassword } = this.form.getRawValue();
 
-    this.securityService.changePassword({
+    await this.securityService.changePassword({
       currentPassword,
       newPassword,
       confirmPassword,

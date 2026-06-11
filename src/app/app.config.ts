@@ -4,6 +4,7 @@ import { provideRouter, TitleStrategy } from '@angular/router';
 
 import { environment } from '../environments/environment';
 
+import { provideHttpApi } from './core/api/provide-http-api';
 import { APP_ENVIRONMENT } from './core/config/app-environment.token';
 import { I18nTitleStrategy } from './core/i18n/i18n-title.strategy';
 import { provideAppState } from './core/state/provide-app-state';
@@ -18,6 +19,7 @@ export const appConfig: ApplicationConfig = {
     provideAnimations(),
     { provide: APP_ENVIRONMENT, useValue: environment },
     { provide: TitleStrategy, useClass: I18nTitleStrategy },
+    provideHttpApi(),
     provideLocaleFeature(),
     provideAppState(),
     provideSecurityFeature(),

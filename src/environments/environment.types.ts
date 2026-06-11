@@ -5,4 +5,5 @@ export type AppEnvironment = {
   readonly appName: string;
   readonly apiUrl: string;
   readonly contour: AppContour;
+  readonly useMockApi: boolean;
 };

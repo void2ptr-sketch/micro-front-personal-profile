@@ -38,4 +38,9 @@ export const EN_MESSAGES: LocaleMessages = {
   'locale.option.zh': 'Chinese',
   'locale.option.en': 'English',
   'footer.copyright': 'personal-profile',
+  'api.error.network': 'No connection to the server',
+  'api.error.unauthorized': 'Authorization required',
+  'api.error.notFound': 'Resource not found',
+  'api.error.server': 'Server error',
+  'api.error.unknown': 'Unknown error',
 };
