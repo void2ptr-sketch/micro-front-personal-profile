@@ -1,6 +1,6 @@
 <nav class="navigation" aria-label="Основная навигация">
   <mat-nav-list>
-    @for (item of navItems; track item.path) {
+    @for (item of navItems(); track item.path) {
       <a
         mat-list-item
         class="navigation__link"

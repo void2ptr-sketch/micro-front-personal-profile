@@ -1,16 +1,36 @@
-<mat-card class="home">
-  <mat-card-header>
-    <mat-card-title>{{ env.appName }}</mat-card-title>
-    <mat-card-subtitle>Персональный профиль</mat-card-subtitle>
-  </mat-card-header>
+@if (profileState.isLoading()) {
+  <mat-card class="home">
+    <mat-card-content>
+      <p>Загрузка профиля...</p>
+    </mat-card-content>
+  </mat-card>
+} @else if (profileState.hasError()) {
+  <mat-card class="home home--error">
+    <mat-card-content>
+      <p>{{ profileState.error() }}</p>
+    </mat-card-content>
+  </mat-card>
+} @else {
+  <mat-card class="home">
+    <mat-card-header>
+      <mat-card-title>{{ profileState.displayName() }}</mat-card-title>
+      <mat-card-subtitle>{{ env.appName }}</mat-card-subtitle>
+    </mat-card-header>
 
-  <mat-card-content>
-    <p>
-      Модуль персонального профиля пользователя для подключения в другие проекты. Расширяется за
-      счёт плагинов.
-    </p>
-    <p class="home__meta">
-      Контур: <strong>{{ env.contour }}</strong>
-    </p>
-  </mat-card-content>
-</mat-card>
+    <mat-card-content>
+      <p>
+        Модуль персонального профиля пользователя для подключения в другие проекты. Расширяется за
+        счёт плагинов.
+      </p>
+      <p class="home__meta">
+        ID: <strong>{{ profileState.profile()?.userId }}</strong>
+      </p>
+      <p class="home__meta">
+        Контур: <strong>{{ env.contour }}</strong>
+      </p>
+      <p class="home__meta">
+        Плагинов: <strong>{{ profileState.plugins().length }}</strong>
+      </p>
+    </mat-card-content>
+  </mat-card>
+}
