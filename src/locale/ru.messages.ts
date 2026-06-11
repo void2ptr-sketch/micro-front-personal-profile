@@ -38,4 +38,9 @@ export const RU_MESSAGES: LocaleMessages = {
   'locale.option.zh': '中文',
   'locale.option.en': 'English',
   'footer.copyright': 'personal-profile',
+  'api.error.network': 'Нет соединения с сервером',
+  'api.error.unauthorized': 'Требуется авторизация',
+  'api.error.notFound': 'Ресурс не найден',
+  'api.error.server': 'Ошибка сервера',
+  'api.error.unknown': 'Неизвестная ошибка',
 };

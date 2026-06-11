@@ -5,4 +5,5 @@ export const environment: AppEnvironment = {
   appName: 'personal-profile',
   apiUrl: 'http://localhost:3000/api',
   contour: 'dev',
+  useMockApi: true,
 };

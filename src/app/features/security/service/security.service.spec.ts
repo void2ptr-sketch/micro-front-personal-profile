@@ -1,5 +1,7 @@
 import { TestBed } from '@angular/core/testing';
+import { of } from 'rxjs';
 
+import { SecurityApiService } from '../../../core/api/services/security-api.service';
 import { LocaleService } from '../../locale/service/locale.service';
 import { SecurityService } from './security.service';
 
@@ -9,13 +11,24 @@ describe('SecurityService', () => {
   beforeEach(() => {
     localStorage.clear();
     spyOnProperty(navigator, 'language', 'get').and.returnValue('ru-RU');
-    TestBed.configureTestingModule({});
+
+    TestBed.configureTestingModule({
+      providers: [
+        {
+          provide: SecurityApiService,
+          useValue: {
+            changePassword: () => of({ data: { changed: true } }),
+          },
+        },
+      ],
+    });
+
     TestBed.inject(LocaleService).initialize();
     service = TestBed.inject(SecurityService);
   });
 
-  it('should change password with valid request', () => {
-    service.changePassword({
+  it('should change password with valid request', async () => {
+    await service.changePassword({
       currentPassword: 'old-password',
       newPassword: 'new-password',
       confirmPassword: 'new-password',
@@ -25,8 +38,8 @@ describe('SecurityService', () => {
     expect(service.successMessage()).toBe('Пароль успешно изменён');
   });
 
-  it('should reject mismatched passwords', () => {
-    service.changePassword({
+  it('should reject mismatched passwords', async () => {
+    await service.changePassword({
       currentPassword: 'old-password',
       newPassword: 'new-password',
       confirmPassword: 'other-password',
@@ -35,8 +48,8 @@ describe('SecurityService', () => {
     expect(service.error()).toBe('Пароли не совпадают');
   });
 
-  it('should reject short password', () => {
-    service.changePassword({
+  it('should reject short password', async () => {
+    await service.changePassword({
       currentPassword: 'old-password',
       newPassword: 'short',
       confirmPassword: 'short',

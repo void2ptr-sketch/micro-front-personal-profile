@@ -2,11 +2,11 @@ import { inject, provideAppInitializer } from '@angular/core';
 
 import { ProfileStateService } from '../../core/state/profile-state.service';
 
-import { SECURITY_PLUGIN } from './security/security.constants';
+import { SECURITY_PLUGIN } from './security.constants';
 
 export const provideSecurityFeature = () =>
-  provideAppInitializer(() => {
+  provideAppInitializer(async () => {
     const profileState = inject(ProfileStateService);
-    profileState.loadInitialProfile();
+    await profileState.loadInitialProfile();
     profileState.registerPlugin(SECURITY_PLUGIN);
   });
