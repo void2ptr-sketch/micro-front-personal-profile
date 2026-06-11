@@ -1,3 +1,11 @@
+.header__toolbar {
+  --mat-toolbar-container-background-color: color-mix(in srgb, var(--mat-sys-primary) 50%, black);
+  --mat-toolbar-container-text-color: #ffffff;
+
+  background-color: color-mix(in srgb, var(--mat-sys-primary) 50%, black);
+  color: #ffffff;
+}
+
 .header__spacer {
   flex: 1 1 auto;
 }

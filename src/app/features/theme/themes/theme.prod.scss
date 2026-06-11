@@ -1,0 +1,5 @@
+@use 'theme-palette' as palette;
+
+html[data-theme='prod'] {
+  @include palette.contour-theme(#616161, #ffffff, #eeeeee, #212121);
+}

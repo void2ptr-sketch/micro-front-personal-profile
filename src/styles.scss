@@ -1,3 +1,10 @@
+@use './app/features/theme/themes/theme.local' as *;
+@use './app/features/theme/themes/theme.dev' as *;
+@use './app/features/theme/themes/theme.test' as *;
+@use './app/features/theme/themes/theme.lt' as *;
+@use './app/features/theme/themes/theme.preprod' as *;
+@use './app/features/theme/themes/theme.prod' as *;
+
 html,
 body {
   height: 100%;

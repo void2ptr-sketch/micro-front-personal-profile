@@ -1,0 +1,5 @@
+@use 'theme-palette' as palette;
+
+html[data-theme='lt'] {
+  @include palette.contour-theme(#f9a825, #1a1b1f, #fff9c4, #f57f17);
+}

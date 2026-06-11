@@ -10,6 +10,7 @@ import { I18nTitleStrategy } from './core/i18n/i18n-title.strategy';
 import { provideAppState } from './core/state/provide-app-state';
 import { provideLocaleFeature } from './features/locale/provide-locale-feature';
 import { provideSecurityFeature } from './features/security/provide-security-feature';
+import { provideThemeFeature } from './features/theme/provide-theme-feature';
 import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
@@ -21,6 +22,7 @@ export const appConfig: ApplicationConfig = {
     { provide: TitleStrategy, useClass: I18nTitleStrategy },
     provideHttpApi(),
     provideLocaleFeature(),
+    provideThemeFeature(),
     provideAppState(),
     provideSecurityFeature(),
   ],

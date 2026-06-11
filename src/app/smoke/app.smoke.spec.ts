@@ -7,6 +7,8 @@ import { ProfileStateService } from '../core/state/profile-state.service';
 import { LOCALE_PLUGIN } from '../features/locale/locale/locale.constants';
 import { LocaleService } from '../features/locale/service/locale.service';
 import { SECURITY_PLUGIN } from '../features/security/security.constants';
+import { THEME_PLUGIN } from '../features/theme/theme.constants';
+import { ThemeService } from '../features/theme/service/theme.service';
 
 import { smokeTestProviders } from './smoke-test.providers';
 
@@ -22,10 +24,12 @@ describe('App smoke scenarios', () => {
     }).compileComponents();
 
     TestBed.inject(LocaleService).initialize();
+    TestBed.inject(ThemeService).initialize();
     const profileState = TestBed.inject(ProfileStateService);
     await profileState.loadInitialProfile();
     profileState.registerPlugin(SECURITY_PLUGIN);
     profileState.registerPlugin(LOCALE_PLUGIN);
+    profileState.registerPlugin(THEME_PLUGIN);
   });
 
   it('should bootstrap application shell', () => {
@@ -39,7 +43,7 @@ describe('App smoke scenarios', () => {
     fixture.detectChanges();
 
     const links = fixture.nativeElement.querySelectorAll('a.navigation__link');
-    expect(links.length).toBe(3);
+    expect(links.length).toBe(4);
   });
 
   it('should navigate to home route', async () => {
@@ -76,5 +80,17 @@ describe('App smoke scenarios', () => {
 
     expect(router.url).toBe('/locale');
     expect(fixture.nativeElement.textContent).toContain('Язык');
+  });
+
+  it('should navigate to theme route', async () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const router = TestBed.inject(Router);
+
+    await router.navigateByUrl('/theme');
+    fixture.detectChanges();
+    await fixture.whenStable();
+
+    expect(router.url).toBe('/theme');
+    expect(fixture.nativeElement.textContent).toContain('Оформление');
   });
 });

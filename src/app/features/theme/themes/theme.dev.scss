@@ -1,0 +1,5 @@
+@use 'theme-palette' as palette;
+
+html[data-theme='dev'] {
+  @include palette.contour-theme(#ef6c00, #ffffff, #ffe0b2, #e65100);
+}
