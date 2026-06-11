@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MatListModule } from '@angular/material/list';
 
-import { DEFAULT_NAV_ITEMS } from '../../config/nav-items';
+import { NavigationStateService } from '../../state/navigation-state.service';
 
 @Component({
   selector: 'app-navigation',
@@ -11,5 +11,7 @@ import { DEFAULT_NAV_ITEMS } from '../../config/nav-items';
   styleUrl: './navigation.component.scss',
 })
 export class NavigationComponent {
-  readonly navItems = DEFAULT_NAV_ITEMS;
+  private readonly navigationState = inject(NavigationStateService);
+
+  readonly navItems = this.navigationState.navItems;
 }

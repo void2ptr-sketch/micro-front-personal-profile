@@ -5,6 +5,7 @@ import { provideRouter } from '@angular/router';
 import { environment } from '../environments/environment';
 
 import { APP_ENVIRONMENT } from './core/config/app-environment.token';
+import { provideAppState } from './core/state/provide-app-state';
 import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
@@ -13,5 +14,6 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideAnimations(),
     { provide: APP_ENVIRONMENT, useValue: environment },
+    provideAppState(),
   ],
 };
