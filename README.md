@@ -21,8 +21,23 @@ src/app/
 └── smoke/          # smoke-тесты
 
 src/locale/         # файлы переводов по языкам
-src/environments/   # конфигурация окружений
+src/environments/   # конфигурация контуров (local, dev, test, lt, preprod, prod)
 ```
+
+## Контуры (environments)
+
+Каждый контур — отдельный файл в `src/environments/`:
+
+| Контур   | Файл                       | Сборка / запуск                    |
+| -------- | -------------------------- | ---------------------------------- |
+| LOCAL    | `environment.local.ts`     | `npm start` / `npm run build:local` |
+| DEV      | `environment.dev.ts`       | `npm run start:dev` / `build:dev`  |
+| TEST     | `environment.test.ts`      | `npm run start:test` / `build:test` |
+| LT       | `environment.lt.ts`        | `npm run start:lt` / `build:lt`    |
+| PREPROD  | `environment.preprod.ts`   | `npm run start:preprod` / `build:preprod` |
+| PROD     | `environment.prod.ts`    | `npm run build:prod`               |
+
+По умолчанию `environment.ts` указывает на LOCAL (localhost, mock API). Angular подменяет файл через `fileReplacements` в `angular.json`.
 
 ## Требования
 

@@ -21,7 +21,7 @@
 | `PersonalProfile` | Профиль пользователя: идентификатор, имя, плагины    |
 | `ProfilePlugin`  | Подключаемый модуль с маршрутом и метаданными         |
 | `NavItem`        | Пункт навигации (метка + путь)                        |
-| `AppContour`     | Контур развёртывания: dev, test, lt, preprod, prod    |
+| `AppContour`     | Контур развёртывания: local, dev, test, lt, preprod, prod |
 
 ## Границы ответственности
 

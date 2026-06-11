@@ -1,4 +1,4 @@
-export type AppContour = 'dev' | 'test' | 'lt' | 'preprod' | 'prod';
+export type AppContour = 'local' | 'dev' | 'test' | 'lt' | 'preprod' | 'prod';
 
 export type ProfilePlugin = {
   readonly id: string;

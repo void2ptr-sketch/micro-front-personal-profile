@@ -1,8 +1,8 @@
 import { createEnvironment } from './create-environment';
 
 export const environment = createEnvironment({
-  contour: 'prod',
-  production: true,
-  apiUrl: '/api',
-  useMockApi: false,
+  contour: 'local',
+  production: false,
+  apiUrl: 'http://localhost:3000/api',
+  useMockApi: true,
 });
