@@ -13,6 +13,12 @@ export const routes: Routes = [
         loadComponent: () => import('./features/home/home.component').then((m) => m.HomeComponent),
         title: 'Главная',
       },
+      {
+        path: 'security',
+        loadComponent: () =>
+          import('./features/security/security/security.component').then((m) => m.SecurityComponent),
+        title: 'Безопасность',
+      },
     ],
   },
   { path: '**', redirectTo: 'home' },

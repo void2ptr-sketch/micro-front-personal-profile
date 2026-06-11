@@ -1,0 +1,46 @@
+.security {
+  max-width: 28rem;
+}
+
+.security__form {
+  display: grid;
+  grid-template-areas:
+    'current'
+    'new'
+    'confirm'
+    'error'
+    'actions';
+  gap: 0.5rem;
+}
+
+.security__field {
+  width: 100%;
+
+  &--current {
+    grid-area: current;
+  }
+
+  &--new {
+    grid-area: new;
+  }
+
+  &--confirm {
+    grid-area: confirm;
+  }
+}
+
+.security__error {
+  grid-area: error;
+  margin: 0;
+  color: var(--mat-sys-error);
+}
+
+.security__success {
+  margin: 0 0 1rem;
+  color: var(--mat-sys-primary);
+}
+
+.security__actions {
+  grid-area: actions;
+  margin-top: 0.5rem;
+}

@@ -6,6 +6,7 @@ import { environment } from '../environments/environment';
 
 import { APP_ENVIRONMENT } from './core/config/app-environment.token';
 import { provideAppState } from './core/state/provide-app-state';
+import { provideSecurityFeature } from './features/security/provide-security-feature';
 import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
@@ -15,5 +16,6 @@ export const appConfig: ApplicationConfig = {
     provideAnimations(),
     { provide: APP_ENVIRONMENT, useValue: environment },
     provideAppState(),
+    provideSecurityFeature(),
   ],
 };
