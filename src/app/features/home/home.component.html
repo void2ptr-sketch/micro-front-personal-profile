@@ -1,7 +1,7 @@
 @if (profileState.isLoading()) {
   <mat-card class="home">
     <mat-card-content>
-      <p>Загрузка профиля...</p>
+      <p>{{ 'home.loading' | t }}</p>
     </mat-card-content>
   </mat-card>
 } @else if (profileState.hasError()) {
@@ -18,18 +18,15 @@
     </mat-card-header>
 
     <mat-card-content>
-      <p>
-        Модуль персонального профиля пользователя для подключения в другие проекты. Расширяется за
-        счёт плагинов.
+      <p>{{ 'home.description' | t }}</p>
+      <p class="home__meta">
+        {{ 'home.meta.id' | t }}: <strong>{{ profileState.profile()?.userId }}</strong>
       </p>
       <p class="home__meta">
-        ID: <strong>{{ profileState.profile()?.userId }}</strong>
+        {{ 'home.meta.contour' | t }}: <strong>{{ env.contour }}</strong>
       </p>
       <p class="home__meta">
-        Контур: <strong>{{ env.contour }}</strong>
-      </p>
-      <p class="home__meta">
-        Плагинов: <strong>{{ profileState.plugins().length }}</strong>
+        {{ 'home.meta.plugins' | t }}: <strong>{{ profileState.plugins().length }}</strong>
       </p>
     </mat-card-content>
   </mat-card>

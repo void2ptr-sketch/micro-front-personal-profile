@@ -4,6 +4,7 @@ export const SECURITY_PLUGIN: ProfilePlugin = {
   id: 'security',
   name: 'Безопасность',
   routePath: '/security',
+  labelKey: 'nav.security',
 };
 
 export const MIN_PASSWORD_LENGTH = 8;

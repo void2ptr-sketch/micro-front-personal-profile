@@ -4,6 +4,7 @@ export type ProfilePlugin = {
   readonly id: string;
   readonly name: string;
   readonly routePath: string;
+  readonly labelKey: string;
 };
 
 export type PersonalProfile = {
@@ -15,4 +16,5 @@ export type PersonalProfile = {
 export type NavItem = {
   readonly label: string;
   readonly path: string;
+  readonly labelKey: string;
 };

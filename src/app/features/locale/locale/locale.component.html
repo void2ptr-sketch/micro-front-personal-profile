@@ -1,0 +1,26 @@
+<mat-card class="locale">
+  <mat-card-header>
+    <mat-card-title>{{ 'locale.title' | t }}</mat-card-title>
+    <mat-card-subtitle>{{ 'locale.subtitle' | t }}</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <p class="locale__meta">
+      {{ 'locale.current' | t }}:
+      <strong>{{ 'locale.option.' + localeService.locale() | t }}</strong>
+    </p>
+
+    @if (localeService.isAutoDetected()) {
+      <p class="locale__auto">{{ 'locale.auto' | t }}</p>
+    }
+
+    <mat-form-field class="locale__select">
+      <mat-label>{{ 'locale.select' | t }}</mat-label>
+      <mat-select [value]="localeService.locale()" (valueChange)="onLocaleChange($event)">
+        @for (option of localeOptions; track option.id) {
+          <mat-option [value]="option.id">{{ 'locale.option.' + option.id | t }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+  </mat-card-content>
+</mat-card>

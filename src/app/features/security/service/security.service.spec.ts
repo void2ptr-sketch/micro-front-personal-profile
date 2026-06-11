@@ -1,12 +1,16 @@
 import { TestBed } from '@angular/core/testing';
 
+import { LocaleService } from '../../locale/service/locale.service';
 import { SecurityService } from './security.service';
 
 describe('SecurityService', () => {
   let service: SecurityService;
 
   beforeEach(() => {
+    localStorage.clear();
+    spyOnProperty(navigator, 'language', 'get').and.returnValue('ru-RU');
     TestBed.configureTestingModule({});
+    TestBed.inject(LocaleService).initialize();
     service = TestBed.inject(SecurityService);
   });
 

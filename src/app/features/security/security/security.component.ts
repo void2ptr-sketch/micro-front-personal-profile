@@ -5,8 +5,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
-import { MIN_PASSWORD_LENGTH } from './security.constants';
+import { TranslatePipe } from '../../../shared/pipes/translate.pipe';
 import { SecurityService } from '../service/security.service';
+import { MIN_PASSWORD_LENGTH } from './security.constants';
 
 @Component({
   selector: 'app-security',
@@ -16,6 +17,7 @@ import { SecurityService } from '../service/security.service';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    TranslatePipe,
   ],
   templateUrl: './security.component.html',
   styleUrl: './security.component.scss',
