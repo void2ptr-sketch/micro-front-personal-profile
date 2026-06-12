@@ -2,6 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 
 import { SecurityApiService } from '../../../core/api/services/security-api.service';
+import { InputSanitizerService } from '../../../shared/security/input-sanitizer.service';
 import { LocaleService } from '../../locale/service/locale.service';
 import { SecurityService } from './security.service';
 
@@ -16,6 +17,7 @@ describe('SecurityService', () => {
       providers: [
         LocaleService,
         SecurityService,
+        InputSanitizerService,
         {
           provide: SecurityApiService,
           useValue: {

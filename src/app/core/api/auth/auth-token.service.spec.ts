@@ -7,7 +7,9 @@ describe('AuthTokenService', () => {
 
   beforeEach(() => {
     sessionStorage.clear();
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      providers: [AuthTokenService],
+    });
     service = TestBed.inject(AuthTokenService);
   });
 

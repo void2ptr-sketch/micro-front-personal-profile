@@ -16,6 +16,7 @@ describe('ProfileApiService', () => {
       providers: [
         provideHttpClient(),
         provideHttpClientTesting(),
+        ProfileApiService,
         {
           provide: APP_ENVIRONMENT,
           useValue: {

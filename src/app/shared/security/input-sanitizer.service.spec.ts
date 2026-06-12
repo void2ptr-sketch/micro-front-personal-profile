@@ -6,7 +6,9 @@ describe('InputSanitizerService', () => {
   let service: InputSanitizerService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      providers: [InputSanitizerService],
+    });
     service = TestBed.inject(InputSanitizerService);
   });
 
