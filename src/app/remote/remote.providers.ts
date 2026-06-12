@@ -11,7 +11,7 @@ import { provideLocaleFeature } from '../features/locale/provide-locale-feature'
 import { provideSecurityFeature } from '../features/security/provide-security-feature';
 import { provideThemeFeature } from '../features/theme/provide-theme-feature';
 
-export const REMOTE_PROVIDERS: Array<Provider | EnvironmentProviders> = [
+export const REMOTE_PROVIDERS: (Provider | EnvironmentProviders)[] = [
   provideAnimations(),
   { provide: APP_ENVIRONMENT, useValue: environment },
   { provide: TitleStrategy, useClass: I18nTitleStrategy },
