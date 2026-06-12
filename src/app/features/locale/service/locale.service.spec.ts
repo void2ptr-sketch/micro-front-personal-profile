@@ -18,7 +18,7 @@ describe('LocaleService', () => {
     service.initialize();
 
     expect(service.locale()).toBe('en');
-    expect(service.translate('nav.userInfo')).toBe('User Info');
+    expect(service.translate('nav.userInfo')).toBe('Home');
   });
 
   it('should initialize with russian for unknown browser locale', () => {
@@ -26,7 +26,7 @@ describe('LocaleService', () => {
     service.initialize();
 
     expect(service.locale()).toBe('ru');
-    expect(service.translate('nav.userInfo')).toBe('Инфо пользователя');
+    expect(service.translate('nav.userInfo')).toBe('Главная');
   });
 
   it('should auto-detect chinese locale', () => {
@@ -34,7 +34,7 @@ describe('LocaleService', () => {
     service.initialize();
 
     expect(service.locale()).toBe('zh');
-    expect(service.translate('nav.userInfo')).toBe('用户信息');
+    expect(service.translate('nav.userInfo')).toBe('首页');
   });
 
   it('should switch locale manually', () => {
