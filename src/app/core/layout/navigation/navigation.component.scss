@@ -1,6 +1,15 @@
+.navigation {
+  --mat-list-list-item-container-shape: 0;
+
+  .mat-mdc-list-item {
+    border-radius: 0;
+  }
+}
+
 .navigation__link {
   text-decoration: none;
   color: inherit;
+  border-radius: 0;
 
   &--active {
     background-color: color-mix(in srgb, var(--mat-sys-primary) 12%, transparent);
