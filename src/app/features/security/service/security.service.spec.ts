@@ -14,6 +14,8 @@ describe('SecurityService', () => {
 
     TestBed.configureTestingModule({
       providers: [
+        LocaleService,
+        SecurityService,
         {
           provide: SecurityApiService,
           useValue: {

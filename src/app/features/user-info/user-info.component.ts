@@ -6,12 +6,12 @@ import { ProfileStateService } from '../../core/state/profile-state.service';
 import { TranslatePipe } from '../../shared/pipes/translate.pipe';
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-user-info',
   imports: [MatCardModule, TranslatePipe],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.scss',
+  templateUrl: './user-info.component.html',
+  styleUrl: './user-info.component.scss',
 })
-export class HomeComponent {
+export class UserInfoComponent {
   readonly env = inject(APP_ENVIRONMENT);
   readonly profileState = inject(ProfileStateService);
 }

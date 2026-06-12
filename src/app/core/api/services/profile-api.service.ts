@@ -6,7 +6,7 @@ import { APP_ENVIRONMENT } from '../../config/app-environment.token';
 import type { PersonalProfile } from '../../domain/profile-domain.types';
 import type { ApiResponse } from '../api.types';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class ProfileApiService {
   private readonly http = inject(HttpClient);
   private readonly environment = inject(APP_ENVIRONMENT);

@@ -2,7 +2,7 @@ import { Injectable, signal } from '@angular/core';
 
 const AUTH_TOKEN_STORAGE_KEY = 'personal-profile.auth-token';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class AuthTokenService {
   private readonly tokenSignal = signal<string | null>(this.readStoredToken());
 

@@ -5,7 +5,7 @@ import type { NavItem } from '../domain/profile-domain.types';
 
 import { ProfileStateService } from './profile-state.service';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class NavigationStateService {
   private readonly profileState = inject(ProfileStateService);
 

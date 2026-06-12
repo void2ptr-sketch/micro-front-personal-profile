@@ -7,7 +7,9 @@ describe('LocaleService', () => {
 
   beforeEach(() => {
     localStorage.clear();
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      providers: [LocaleService],
+    });
     service = TestBed.inject(LocaleService);
   });
 
@@ -16,7 +18,7 @@ describe('LocaleService', () => {
     service.initialize();
 
     expect(service.locale()).toBe('en');
-    expect(service.translate('nav.home')).toBe('Home');
+    expect(service.translate('nav.userInfo')).toBe('User Info');
   });
 
   it('should initialize with russian for unknown browser locale', () => {
@@ -24,7 +26,7 @@ describe('LocaleService', () => {
     service.initialize();
 
     expect(service.locale()).toBe('ru');
-    expect(service.translate('nav.home')).toBe('Главная');
+    expect(service.translate('nav.userInfo')).toBe('Инфо пользователя');
   });
 
   it('should auto-detect chinese locale', () => {
@@ -32,7 +34,7 @@ describe('LocaleService', () => {
     service.initialize();
 
     expect(service.locale()).toBe('zh');
-    expect(service.translate('nav.home')).toBe('首页');
+    expect(service.translate('nav.userInfo')).toBe('用户信息');
   });
 
   it('should switch locale manually', () => {

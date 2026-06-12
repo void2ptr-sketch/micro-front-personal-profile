@@ -46,15 +46,15 @@ describe('App smoke scenarios', () => {
     expect(links.length).toBe(4);
   });
 
-  it('should navigate to home route', async () => {
+  it('should navigate to user-info route', async () => {
     const fixture = TestBed.createComponent(AppComponent);
     const router = TestBed.inject(Router);
 
-    await router.navigateByUrl('/home');
+    await router.navigateByUrl('/user-info');
     fixture.detectChanges();
     await fixture.whenStable();
 
-    expect(router.url).toBe('/home');
+    expect(router.url).toBe('/user-info');
     expect(fixture.nativeElement.textContent).toContain('Демо-пользователь');
   });
 

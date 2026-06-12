@@ -7,11 +7,12 @@ export const routes: Routes = [
     path: '',
     component: MainLayoutComponent,
     children: [
-      { path: '', redirectTo: 'home', pathMatch: 'full' },
+      { path: '', redirectTo: 'user-info', pathMatch: 'full' },
       {
-        path: 'home',
-        loadComponent: () => import('./features/home/home.component').then((m) => m.HomeComponent),
-        data: { titleKey: 'route.home.title' },
+        path: 'user-info',
+        loadComponent: () =>
+          import('./features/user-info/user-info.component').then((m) => m.UserInfoComponent),
+        data: { titleKey: 'route.userInfo.title' },
       },
       {
         path: 'security',
@@ -35,5 +36,5 @@ export const routes: Routes = [
       },
     ],
   },
-  { path: '**', redirectTo: 'home' },
+  { path: '**', redirectTo: 'user-info' },
 ];

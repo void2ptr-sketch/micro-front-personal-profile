@@ -206,19 +206,19 @@
 							"buildTarget": "personal-profile:esbuild:production"
 						},
 						"local": {
-							"buildTarget": "personal-profile:build:local"
+							"buildTarget": "personal-profile:esbuild:local"
 						},
 						"dev": {
-							"buildTarget": "personal-profile:build:dev"
+							"buildTarget": "personal-profile:esbuild:dev"
 						},
 						"test": {
-							"buildTarget": "personal-profile:build:test"
+							"buildTarget": "personal-profile:esbuild:test"
 						},
 						"lt": {
-							"buildTarget": "personal-profile:build:lt"
+							"buildTarget": "personal-profile:esbuild:lt"
 						},
 						"preprod": {
-							"buildTarget": "personal-profile:build:preprod"
+							"buildTarget": "personal-profile:esbuild:preprod"
 						},
 						"development": {
 							"buildTarget": "personal-profile:esbuild:development"

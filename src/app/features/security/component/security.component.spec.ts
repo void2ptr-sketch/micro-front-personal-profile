@@ -4,6 +4,7 @@ import { of } from 'rxjs';
 
 import { SecurityApiService } from '../../../core/api/services/security-api.service';
 import { LocaleService } from '../../locale/service/locale.service';
+import { SecurityService } from '../service/security.service';
 
 import { SecurityComponent } from './security.component';
 
@@ -16,6 +17,8 @@ describe('SecurityComponent', () => {
       imports: [SecurityComponent],
       providers: [
         provideNoopAnimations(),
+        LocaleService,
+        SecurityService,
         {
           provide: SecurityApiService,
           useValue: {
