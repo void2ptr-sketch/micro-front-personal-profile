@@ -20,7 +20,7 @@ src/app/
 ├── shared/         # pipes, security utils
 └── smoke/          # smoke-тесты
 
-src/locale/         # файлы переводов по языкам
+src/locale/         # переводы: messages.ru.ts, messages.en.ts, messages.zh.ts
 src/environments/   # конфигурация контуров (local, dev, test, lt, preprod, prod)
 ```
 

@@ -1,7 +1,7 @@
 import type { AppLocale, LocaleMessages, LocaleOption } from './locale.types';
-import { EN_MESSAGES } from './en.messages';
-import { RU_MESSAGES } from './ru.messages';
-import { ZH_MESSAGES } from './zh.messages';
+import { EN_MESSAGES } from './messages.en';
+import { RU_MESSAGES } from './messages.ru';
+import { ZH_MESSAGES } from './messages.zh';
 
 export const LOCALE_STORAGE_KEY = 'personal-profile.locale';
 
