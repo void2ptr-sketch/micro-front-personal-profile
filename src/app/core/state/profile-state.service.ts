@@ -8,7 +8,7 @@ import { LocaleService } from '../../features/locale/service/locale.service';
 
 import type { AsyncStatus } from './profile-state.types';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class ProfileStateService {
   private readonly profileApi = inject(ProfileApiService);
   private readonly localeService = inject(LocaleService);

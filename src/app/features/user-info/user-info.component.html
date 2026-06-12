@@ -1,0 +1,33 @@
+@if (profileState.isLoading()) {
+  <mat-card class="user-info">
+    <mat-card-content>
+      <p>{{ 'userInfo.loading' | t }}</p>
+    </mat-card-content>
+  </mat-card>
+} @else if (profileState.hasError()) {
+  <mat-card class="user-info user-info--error">
+    <mat-card-content>
+      <p>{{ profileState.error() }}</p>
+    </mat-card-content>
+  </mat-card>
+} @else {
+  <mat-card class="user-info">
+    <mat-card-header>
+      <mat-card-title>{{ profileState.displayName() }}</mat-card-title>
+      <mat-card-subtitle>{{ env.appName }}</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <p>{{ 'userInfo.description' | t }}</p>
+      <p class="user-info__meta">
+        {{ 'userInfo.meta.id' | t }}: <strong>{{ profileState.profile()?.userId }}</strong>
+      </p>
+      <p class="user-info__meta">
+        {{ 'userInfo.meta.contour' | t }}: <strong>{{ env.contour }}</strong>
+      </p>
+      <p class="user-info__meta">
+        {{ 'userInfo.meta.plugins' | t }}: <strong>{{ profileState.plugins().length }}</strong>
+      </p>
+    </mat-card-content>
+  </mat-card>
+}

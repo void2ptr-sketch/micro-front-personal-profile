@@ -8,7 +8,7 @@ import {
 } from '../../../../locale/locale-registry';
 import type { AppLocale } from '../../../../locale/locale.types';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class LocaleService {
   private readonly localeSignal = signal<AppLocale>('ru');
   private readonly autoDetectedSignal = signal(false);

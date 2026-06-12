@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { APP_ENVIRONMENT } from '../../config/app-environment.token';
 import type { ApiResponse, PasswordChangePayload, PasswordChangeResult } from '../api.types';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class SecurityApiService {
   private readonly http = inject(HttpClient);
   private readonly environment = inject(APP_ENVIRONMENT);

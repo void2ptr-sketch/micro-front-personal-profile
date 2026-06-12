@@ -9,7 +9,7 @@ describe('LocaleComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [LocaleComponent],
-      providers: [provideNoopAnimations()],
+      providers: [provideNoopAnimations(), LocaleService],
     }).compileComponents();
 
     TestBed.inject(LocaleService).initialize();

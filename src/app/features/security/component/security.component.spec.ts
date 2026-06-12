@@ -3,7 +3,9 @@ import { provideNoopAnimations } from '@angular/platform-browser/animations';
 import { of } from 'rxjs';
 
 import { SecurityApiService } from '../../../core/api/services/security-api.service';
+import { InputSanitizerService } from '../../../shared/security/input-sanitizer.service';
 import { LocaleService } from '../../locale/service/locale.service';
+import { SecurityService } from '../service/security.service';
 
 import { SecurityComponent } from './security.component';
 
@@ -16,6 +18,9 @@ describe('SecurityComponent', () => {
       imports: [SecurityComponent],
       providers: [
         provideNoopAnimations(),
+        LocaleService,
+        SecurityService,
+        InputSanitizerService,
         {
           provide: SecurityApiService,
           useValue: {

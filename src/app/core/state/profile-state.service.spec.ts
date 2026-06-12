@@ -16,6 +16,8 @@ describe('ProfileStateService', () => {
 
     TestBed.configureTestingModule({
       providers: [
+        LocaleService,
+        ProfileStateService,
         {
           provide: ProfileApiService,
           useValue: {

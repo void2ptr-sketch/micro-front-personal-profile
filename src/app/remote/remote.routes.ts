@@ -9,11 +9,12 @@ export const REMOTE_ROUTES: Routes = [
     component: RemoteShellComponent,
     providers: REMOTE_PROVIDERS,
     children: [
-      { path: '', redirectTo: 'home', pathMatch: 'full' },
+      { path: '', redirectTo: 'user-info', pathMatch: 'full' },
       {
-        path: 'home',
-        loadComponent: () => import('../features/home/home.component').then((m) => m.HomeComponent),
-        data: { titleKey: 'route.home.title' },
+        path: 'user-info',
+        loadComponent: () =>
+          import('../features/user-info/user-info.component').then((m) => m.UserInfoComponent),
+        data: { titleKey: 'route.userInfo.title' },
       },
       {
         path: 'security',

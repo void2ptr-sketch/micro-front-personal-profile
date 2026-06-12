@@ -8,7 +8,7 @@ import { LocaleService } from '../../locale/service/locale.service';
 import { MAX_PASSWORD_LENGTH, MIN_PASSWORD_LENGTH } from '../security.constants';
 import type { PasswordChangeRequest, PasswordChangeStatus } from '../security.types';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class SecurityService {
   private readonly localeService = inject(LocaleService);
   private readonly inputSanitizer = inject(InputSanitizerService);

@@ -6,7 +6,7 @@ import { APP_ENVIRONMENT } from '../../../core/config/app-environment.token';
 import { THEME_STORAGE_KEY, isAppTheme } from '../theme-registry';
 import type { AppTheme } from '../theme.types';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class ThemeService {
   private readonly document = inject(DOCUMENT);
   private readonly env = inject(APP_ENVIRONMENT);
@@ -35,6 +35,10 @@ export class ThemeService {
   resetToContour(): void {
     localStorage.removeItem(THEME_STORAGE_KEY);
     this.applyTheme(this.env.contour, true);
+  }
+
+  resetShellTheme(): void {
+    this.document.documentElement.removeAttribute('data-theme');
   }
 
   private applyTheme(theme: AppTheme, contourDefault: boolean): void {

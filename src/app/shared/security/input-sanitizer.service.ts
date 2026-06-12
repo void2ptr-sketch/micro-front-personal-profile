@@ -12,7 +12,7 @@ export type SanitizePasswordOptions = {
 const DEFAULT_TEXT_OPTIONS: SanitizeTextOptions = { maxLength: 256 };
 const DEFAULT_PASSWORD_OPTIONS: SanitizePasswordOptions = { maxLength: 128 };
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class InputSanitizerService {
   private readonly sanitizer = inject(DomSanitizer);
 
