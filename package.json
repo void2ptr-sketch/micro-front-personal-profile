@@ -28,6 +28,8 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-architects/module-federation": "^21.2.2",
+    "@angular-architects/native-federation": "^19.0.23",
     "@angular/animations": "^19.2.25",
     "@angular/cdk": "^19.2.19",
     "@angular/common": "^19.2.0",
@@ -39,6 +41,8 @@
     "@angular/platform-browser": "^19.2.0",
     "@angular/platform-browser-dynamic": "^19.2.0",
     "@angular/router": "^19.2.0",
+    "@softarc/native-federation-node": "^2.0.10",
+    "es-module-shims": "^1.5.12",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"

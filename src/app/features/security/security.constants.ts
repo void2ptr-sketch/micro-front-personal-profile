@@ -3,7 +3,7 @@ import type { ProfilePlugin } from '../../core/domain/profile-domain.types';
 export const SECURITY_PLUGIN: ProfilePlugin = {
   id: 'security',
   name: 'Безопасность',
-  routePath: '/security',
+  routePath: 'security',
   labelKey: 'nav.security',
 };
 
