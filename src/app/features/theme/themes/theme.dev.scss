@@ -1,5 +1,6 @@
 @use 'theme-palette' as palette;
 
-html[data-theme='dev'] {
+html[data-theme='dev'],
+app-personal-profile-remote-shell[data-theme='dev'] {
   @include palette.contour-theme(#ef6c00, #ffffff, #ffe0b2, #e65100);
 }

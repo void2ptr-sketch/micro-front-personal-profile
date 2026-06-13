@@ -1,5 +1,6 @@
 @use 'theme-palette' as palette;
 
-html[data-theme='prod'] {
+html[data-theme='prod'],
+app-personal-profile-remote-shell[data-theme='prod'] {
   @include palette.contour-theme(#616161, #ffffff, #eeeeee, #212121);
 }

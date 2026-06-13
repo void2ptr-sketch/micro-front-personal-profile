@@ -16,7 +16,7 @@
 
     <mat-form-field class="locale__select">
       <mat-label>{{ 'locale.select' | t }}</mat-label>
-      <mat-select [value]="localeService.locale()" (valueChange)="onLocaleChange($event)">
+      <mat-select [value]="localeService.locale()" (selectionChange)="onLocaleSelection($event)">
         @for (option of localeOptions; track option.id) {
           <mat-option [value]="option.id">{{ 'locale.option.' + option.id | t }}</mat-option>
         }

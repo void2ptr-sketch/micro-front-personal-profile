@@ -32,15 +32,23 @@ const PERSONAL_PROFILE_SERVICES: Provider[] = [
   NavigationStateService,
 ];
 
+const PERSONAL_PROFILE_FEATURE_PROVIDERS: (Provider | EnvironmentProviders)[] = [
+  { provide: APP_ENVIRONMENT, useValue: environment },
+  ...PERSONAL_PROFILE_SERVICES,
+  provideHttpApi(),
+  provideLocaleFeature(),
+  provideThemeFeature(),
+  provideAppState(),
+  provideSecurityFeature(),
+];
+
+/** Remote routes in host shell: animations are provided by the shell app. */
+export const providePersonalProfileRemote = (): EnvironmentProviders =>
+  makeEnvironmentProviders(PERSONAL_PROFILE_FEATURE_PROVIDERS);
+
 export const providePersonalProfileCore = (): EnvironmentProviders =>
   makeEnvironmentProviders([
     provideAnimations(),
-    { provide: APP_ENVIRONMENT, useValue: environment },
     { provide: TitleStrategy, useClass: I18nTitleStrategy },
-    ...PERSONAL_PROFILE_SERVICES,
-    provideHttpApi(),
-    provideLocaleFeature(),
-    provideThemeFeature(),
-    provideAppState(),
-    provideSecurityFeature(),
+    ...PERSONAL_PROFILE_FEATURE_PROVIDERS,
   ]);

@@ -21,17 +21,21 @@
 
     <mat-form-field class="theme__select">
       <mat-label>{{ 'theme.select' | t }}</mat-label>
-      <mat-select [value]="themeService.theme()" (valueChange)="onThemeChange($event)">
+      <mat-select [value]="themeService.theme()" (selectionChange)="onThemeSelection($event)">
         @for (option of themeOptions; track option.id) {
           <mat-option [value]="option.id">{{ option.labelKey | t }}</mat-option>
         }
       </mat-select>
     </mat-form-field>
 
-    @if (!themeService.isContourDefault()) {
-      <button mat-stroked-button type="button" (click)="resetToContour()">
+    <button
+      mat-stroked-button
+      type="button"
+      class="theme__reset"
+      [class.theme__reset--hidden]="themeService.isContourDefault()"
+      (click)="resetToContour()"
+    >
         {{ 'theme.resetContour' | t }}
-      </button>
-    }
+    </button>
   </mat-card-content>
 </mat-card>

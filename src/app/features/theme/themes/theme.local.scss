@@ -1,5 +1,6 @@
 @use 'theme-palette' as palette;
 
-html[data-theme='local'] {
+html[data-theme='local'],
+app-personal-profile-remote-shell[data-theme='local'] {
   @include palette.contour-theme(#7b1fa2, #ffffff, #e1bee7, #4a148c);
 }

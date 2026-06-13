@@ -39,11 +39,43 @@ export class ThemeService {
 
   resetShellTheme(): void {
     this.document.documentElement.removeAttribute('data-theme');
+
+    for (const shell of this.document.querySelectorAll('app-personal-profile-remote-shell')) {
+      shell.removeAttribute('data-theme');
+    }
   }
 
   private applyTheme(theme: AppTheme, contourDefault: boolean): void {
     this.themeSignal.set(theme);
     this.contourDefaultSignal.set(contourDefault);
-    this.document.documentElement.setAttribute('data-theme', theme);
+
+    const themeTarget = this.resolveThemeTarget();
+    themeTarget.setAttribute('data-theme', theme);
+    this.clearThemeFromOtherTargets(themeTarget);
+  }
+
+  private resolveThemeTarget(): HTMLElement {
+    const shell = this.document.querySelector(
+      'app-personal-profile-remote-shell:not([aria-hidden="true"])',
+    );
+
+    if (shell instanceof HTMLElement) {
+      return shell;
+    }
+
+    return this.document.documentElement;
+  }
+
+  private clearThemeFromOtherTargets(activeTarget: HTMLElement): void {
+    const targets = [
+      this.document.documentElement,
+      ...Array.from(this.document.querySelectorAll('app-personal-profile-remote-shell')),
+    ];
+
+    for (const target of targets) {
+      if (target instanceof HTMLElement && target !== activeTarget) {
+        target.removeAttribute('data-theme');
+      }
+    }
   }
 }
